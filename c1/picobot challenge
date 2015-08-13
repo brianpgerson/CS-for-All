@@ -1,0 +1,74 @@
+# NORTH FACE
+#walls not north and wall is E, head north in NP
+0 xE** -> N 0
+
+#walls not E, head E in EP
+0 *x** -> E 1
+
+#wall is north, open W only, head W in WP
+0 NEx* -> W 2
+
+#wall is north, west, and east, head S in SP
+0 NEWx -> S 3
+
+
+
+
+# SOUTH FACE
+
+#walls not south and wall is W, head south in SP
+3 **Wx -> S 3
+
+#walls not W, head W in WP
+3 **x* -> W 2
+
+#wall is south, open E only, head E in EP
+3 *xWS -> E 1
+
+#wall is south, west, and east, head N in NP
+3 xEWS -> N 0
+
+
+
+
+# EAST FACE
+
+#walls not east and wall is N, head east in EP
+1 Nx*S -> E 1
+
+#wall is N, not east, and not south, head south in SP
+1 Nx*x -> S 3
+
+#wall isn't N, E, or S, head south in SP
+1 xx*x -> S 3
+
+#wall is S and E, head N in NP
+1 xE*S -> N 0
+
+#wall is south only, head E in EP
+1 xxxS -> E 1
+
+#wall is east only, head S in SP
+1 xExx -> S 3
+
+#wall is east, open S only, head S in SP
+1 NE*x -> S 3
+
+#wall is north, south, and east, head W in WP
+1 NExS -> W 2
+
+
+
+# WEST FACE
+
+#walls not west and wall is N, head west in WP
+2 N*x* -> W 2
+
+#walls not n, head N in NP
+2 x*** -> N 0
+
+#wall is west, open S only, head S in SP
+2 N*Wx -> S 3
+
+#wall is north, south, and west, head E in EP
+2 NxWS -> E 1
