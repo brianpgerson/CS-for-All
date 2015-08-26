@@ -33,3 +33,23 @@ function editCost(firstStr, secondStr){
 		return Math.min(substitution, deletion, insertion);
 	}
 }
+
+function recursiveFactorial(3){
+	if (n == 0) {
+		return 1;
+	} else {
+		return recursiveFactorial(n-1) * n;
+	}
+}
+
+
+
+take n
+if n = 1, return n
+multiply n by n-1
+store
+multiply store by store-1
+store
+multipy store by store-1
+1
+
