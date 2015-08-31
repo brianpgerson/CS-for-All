@@ -34,7 +34,7 @@ function editCost(firstStr, secondStr){
 	}
 }
 
-function recursiveFactorial(3){
+function recursiveFactorial(n){
 	if (n == 0) {
 		return 1;
 	} else {
@@ -42,14 +42,13 @@ function recursiveFactorial(3){
 	}
 }
 
+function dot(x,y){
+	if (x.length == 0 || y.length == 0){
+		return 0;
+	} else {
+		var firstProduct = x[0] * y[0];
+		return firstProduct + dot(x.slice(1), y.slice(1));
+	}
+}
 
-
-take n
-if n = 1, return n
-multiply n by n-1
-store
-multiply store by store-1
-store
-multipy store by store-1
-1
 
