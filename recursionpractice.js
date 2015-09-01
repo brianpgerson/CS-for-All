@@ -63,3 +63,27 @@ function explode(str){
 	}
 }
 
+function ind(el, list){
+	var not = [];
+	if (list[0] == [] || list[0] == undefined) {
+		console.log("not in here.")
+		return 1;
+	}
+	else if (el == list[0]){
+		return 0;
+	} else {
+		return not.push(list[0]) + ind(el, list.slice(1));
+	}
+}
+
+function ind(el, list){
+	if (list[0] == [] || list[0] == undefined) {
+		console.log("not in here.")
+		return 1;
+	}
+	else if (el == list[0]){
+		return 0;
+	} else {
+		return 1 + ind(el, list.slice(1));
+	}
+}
