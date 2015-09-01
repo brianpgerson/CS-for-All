@@ -43,7 +43,10 @@ function recursiveFactorial(n){
 }
 
 function dot(x,y){
-	if (x.length == 0 || y.length == 0){
+	if (x.length != y.length) {
+		return console.log('error: list lengths are different.');
+	}
+	else if (x.length == 0 || y.length == 0){
 		return 0;
 	} else {
 		var firstProduct = x[0] * y[0];
@@ -51,4 +54,12 @@ function dot(x,y){
 	}
 }
 
+function explode(str){
+	if (str == ""){
+		return x;
+	} else {
+		x = [];
+		return x.concat(str[0], explode(str.slice(1)));
+	}
+}
 
