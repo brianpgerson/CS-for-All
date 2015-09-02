@@ -99,5 +99,19 @@ function removeAll(el, list){
 
 }
 
+//recursively recreate an implemenation of filter
+function recursiveFilter(test, list) {
+	var x = [];
+	if (list[0] == undefined) {
+		return [];
+	} else if (test(list[0])) {
+		return x.concat(list[0], recursiveFilter(test, list.slice(1)));
+	} else {
+		return recursiveFilter(test, list.slice(1));
+	}
+}
+
+
+
 
 
