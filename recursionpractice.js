@@ -1,3 +1,4 @@
+//reverses a string recursively
 function reverse(str){
 	if (str == ""){
 		return "";
@@ -7,6 +8,8 @@ function reverse(str){
 	}
 }
 
+//finds the best combination of items/weights to bring the most items 
+//with a combined weight closest to the weight limit. recursively.
 function bestSubset(weightLimit, items){
 	if (weightLimit == 0 || items.length == 0){
 		return 0;
@@ -19,6 +22,8 @@ function bestSubset(weightLimit, items){
 	}
 }
 
+//recursively finds the number of edits (insertions, removals, deletions)
+//required to change one string into another string
 function editCost(firstStr, secondStr){
 	if (firstStr.length == 0){
 		return secondStr.length;
@@ -34,6 +39,7 @@ function editCost(firstStr, secondStr){
 	}
 }
 
+//pretty recursively self-explanatory, no?
 function recursiveFactorial(n){
 	if (n == 0) {
 		return 1;
@@ -42,6 +48,8 @@ function recursiveFactorial(n){
 	}
 }
 
+//returns the dot product of two lists recursively (i.e. the sum of
+// the products of each corresponding pair of elements)
 function dot(x,y){
 	if (x.length != y.length) {
 		return console.log('error: list lengths are different.');
@@ -54,6 +62,7 @@ function dot(x,y){
 	}
 }
 
+//basically a recursive version of .split()
 function explode(str){
 	if (str == ""){
 		return x;
@@ -64,7 +73,8 @@ function explode(str){
 }
 
 
-
+//finds the index at which an element in a list can be found. recursively.
+// ~*~*~ this was a good mental breakthrough for me, i think! ~*~*~
 function ind(el, list){
 	if (list[0] == [] || list[0] == undefined) {
 		console.log("not in here.")
@@ -77,6 +87,7 @@ function ind(el, list){
 	}
 }
 
+//recursively removes all instances of an element in a list (or subsets of a string)
 function removeAll(el, list){
 	if (list[0] == [] || list[0] == undefined) {
 		return [];
