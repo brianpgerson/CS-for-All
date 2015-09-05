@@ -111,6 +111,20 @@ function recursiveFilter(test, list) {
 	}
 }
 
+//reverse an array, including elements in any lower level arrays...recursively
+function recursiveDeepReverse(list){
+	if (list[0] == undefined) {
+		return [];
+	} else if (!Array.isArray(list[0])){
+		if (!Array.isArray(list[1])) {
+			return recursiveDeepReverse(list.slice(1)).concat(list[0]);
+		} else {
+			return recursiveDeepReverse(list.slice(2)).concat(recursiveDeepReverse(list.slice(1)).concat(list[0]));	
+		}
+	} else if (Array.isArray(list[0])){
+		return [recursiveDeepReverse(list[0].slice(1)).concat(list[0][0])];
+	}
+}
 
 
 
