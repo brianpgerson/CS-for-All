@@ -126,6 +126,43 @@ function recursiveDeepReverse(list){
 	}
 }
 
+//scrabble score finder. recurseively, but of course.
+var scrabbleScores = [ ["a", 1], ["b", 3], ["c", 3], ["d", 2], ["e", 1], ["f", 4], ["g", 2], ["h", 4], ["i", 1], ["j", 8], ["k", 5], ["l", 1], ["m", 3], ["n", 1], ["o", 1], ["p", 3], ["q", 10], ["r", 1], ["s", 1], ["t", 1], ["u", 1], ["v", 4], ["w", 4], ["x", 8], ["y", 4], ["z", 10] ]
+function letterScore(letter, scoreList){
+	if (letter == scoreList[0][0]){
+		return scoreList[0][1];
+	} else {
+		return letterScore(letter, scoreList.slice(1));
+	}
+}
+
+//does the same thing, but for a WHOLE WORD 
+function wordScore(word, scoreList){
+	if (word[0] == undefined){
+		return 0;
+	} else if (word[0] == scoreList[0][0]){
+		return (scoreList[0][1]) + wordScore(word.slice(1), scoreList);
+	} else {
+		return wordScore(word, scoreList.slice(1).concat([scoreList[0]]));
+	}
+}
+
+
+function change(changeAmount, coins){
+	if (changeAmount == 0){
+		return 0;
+	} else if (coins[0] == undefined){
+		return Infinity;
+	} else if (coins[0] > changeAmount){
+		return change(changeAmount, coins.slice(1))
+	} else {
+		loseIt = 0 + change(changeAmount, coins.slice(1));
+		useIt = 1 + Math.min(change(changeAmount - coins[0], coins.slice(1)), change(changeAmount - coins[0], coins));
+		return Math.min(useIt, loseIt);	
+	}	
+}
+
+
 
 
 
