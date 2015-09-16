@@ -10,14 +10,15 @@ function reverse(str){
 
 //finds the best combination of items/weights to bring the most items 
 //with a combined weight closest to the weight limit. recursively.
-function bestSubset(weightLimit, items){
-	if (weightLimit == 0 || items.length == 0){
-		return 0;
-	} else if (items[0] > weightLimit){
-		return bestSubset(weightLimit, items.slice(1));
-	} else {
-		loseIt = bestSubset(weightLimit, items.slice(1));
-		useIt = items[0] + bestSubset(weightLimit - items[0], items.slice(1));
+function subset(capacity, items){
+	if (capacity <= 0 || items.length == 0)
+		{return 0;}
+	else if (items[0] > capacity){
+		return subset(capacity, items.slice(1));
+	}
+	else {
+		loseIt = subset(capacity, items.slice(1));
+		useIt = items[0] + subset(capacity - items[0], items.slice(1));
 		return Math.max(loseIt, useIt);
 	}
 }
@@ -148,20 +149,19 @@ function wordScore(word, scoreList){
 }
 
 
-function change(changeAmount, coins){
-	if (changeAmount == 0){
+function change(amount, coins){
+	if (amount == 0){
 		return 0;
-	} else if (coins[0] == undefined){
+	} else if (coins.length == 0 && amount > 0){
 		return Infinity;
-	} else if (coins[0] > changeAmount){
-		return change(changeAmount, coins.slice(1))
+	} else if (coins[0] > amount){
+		return change(amount, coins.slice(1));
 	} else {
-		loseIt = 0 + change(changeAmount, coins.slice(1));
-		useIt = 1 + Math.min(change(changeAmount - coins[0], coins.slice(1)), change(changeAmount - coins[0], coins));
-		return Math.min(useIt, loseIt);	
-	}	
+		var loseIt = 0 + change(amount, coins.slice(1));
+		var useIt = 1 + change(amount - coins[0], coins);
+		return Math.min(loseIt, useIt);
+	}
 }
-
 
 
 
