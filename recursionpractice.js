@@ -163,6 +163,20 @@ function change(amount, coins){
 	}
 }
 
+function giveChange(amount, coins){
+	if (amount == 0){
+		return [0, []];
+	} else if (coins.length == 0 && amount > 0){
+		return [Infinity, []];
+	} else if (coins[0] > amount){
+		return giveChange(amount, coins.slice(1));
+	} else {
+		debugger;
+		var loseIt = [0 + giveChange(amount, coins.slice(1))[0], [].concat(giveChange(amount, coins.slice(1))[1]) ];
+		var useIt = [1 + giveChange(amount - coins[0], coins)[0], [coins[0]].concat(giveChange(amount, coins)[1]) ];
+		return Math.min(loseIt, useIt);
+	}
+}
 
-
+[x[0] + y[0], x[1].concat(y[1])]
 
