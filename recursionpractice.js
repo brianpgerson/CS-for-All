@@ -148,7 +148,8 @@ function wordScore(word, scoreList){
 	}
 }
 
-
+//returns the minimum number of coins required to make change for a given amount with a given set of coins 
+//and coin values
 function change(amount, coins){
 	if (amount == 0){
 		return 0;
@@ -163,20 +164,22 @@ function change(amount, coins){
 	}
 }
 
+//returns the minimum number of coins and the actual set of coins required to make change for a given amount with a 
+//given set of coins and coin values
 function giveChange(amount, coins){
-	if (amount == 0){
-		return [0, []];
-	} else if (coins.length == 0 && amount > 0){
-		return [Infinity, []];
+	if (amount === 0){
+		return [0,[]];
+	} else if (coins.length === 0 && amount > 0){
+		return [Infinity,[]];
 	} else if (coins[0] > amount){
 		return giveChange(amount, coins.slice(1));
 	} else {
-		debugger;
-		var loseIt = [0 + giveChange(amount, coins.slice(1))[0], [].concat(giveChange(amount, coins.slice(1))[1]) ];
-		var useIt = [1 + giveChange(amount - coins[0], coins)[0], [coins[0]].concat(giveChange(amount, coins)[1]) ];
-		return Math.min(loseIt, useIt);
+		var loseIt = giveChange(amount, coins.slice(1));
+		var useIt = giveChange(amount-coins[0], coins);
+		if (1 + useIt[0] > loseIt[0]){
+			return loseIt;
+		} else {
+			return [1 + useIt[0], useIt[1].concat(coins[0])];
+		}
 	}
 }
-
-[x[0] + y[0], x[1].concat(y[1])]
-
